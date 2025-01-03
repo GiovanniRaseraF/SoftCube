@@ -90,8 +90,89 @@ void display(){
         }
         std::cout << std::endl;
     }
+
+    std::cout << std::endl << std::endl;
 }
 
+// Right Move
+void RMove(){
+    // save
+    enum colors posterior_2_2 = P[2][2];
+    enum colors posterior_1_2 = P[1][2];
+    enum colors posterior_0_2 = P[0][2];
+
+    P[2][2] = B[2][2];
+    P[1][2] = B[1][2];
+    P[0][2] = B[0][2];
+
+    B[2][2] = F[2][2];
+    B[1][2] = F[1][2];
+    B[0][2] = F[0][2];
+
+    F[2][2] = T[2][2];
+    F[1][2] = T[1][2];
+    F[0][2] = T[0][2];
+    
+    T[2][2] = posterior_2_2;
+    T[1][2] = posterior_1_2;
+    T[0][2] = posterior_0_2;
+}
+
+// Middle Move
+void MMove(){
+    // save
+    enum colors posterior_2_1 = P[2][1];
+    enum colors posterior_1_1 = P[1][1];
+    enum colors posterior_0_1 = P[0][1];
+
+    P[2][1] = B[2][1];
+    P[1][1] = B[1][1];
+    P[0][1] = B[0][1];
+
+    B[2][1] = F[2][1];
+    B[1][1] = F[1][1];
+    B[0][1] = F[0][1];
+
+    F[2][1] = T[2][1];
+    F[1][1] = T[1][1];
+    F[0][1] = T[0][1];
+    
+    T[2][1] = posterior_2_1;
+    T[1][1] = posterior_1_1;
+    T[0][1] = posterior_0_1;
+}
+
+// Left Move
+void LMove(){
+    // save
+    enum colors posterior_2_0 = P[2][0];
+    enum colors posterior_1_0 = P[1][0];
+    enum colors posterior_0_0 = P[0][0];
+
+    P[2][0] = B[2][0];
+    P[1][0] = B[1][0];
+    P[0][0] = B[0][0];
+
+    B[2][0] = F[2][0];
+    B[1][0] = F[1][0];
+    B[0][0] = F[0][0];
+
+    F[2][0] = T[2][0];
+    F[1][0] = T[1][0];
+    F[0][0] = T[0][0];
+    
+    T[2][0] = posterior_2_0;
+    T[1][0] = posterior_1_0;
+    T[0][0] = posterior_0_0;
+}
+
+
 int main(){
+    display();
+    RMove();
+    display();
+    MMove();
+    display();
+    LMove();
     display();
 }
