@@ -4,10 +4,9 @@
 #include <sstream>
 #include <chrono>
 #include <array>
+#include <ncurses.h>
 
 #define TRI 3
-
-
 #define INIT(c){{{(c), (c), (c)}, {(c), (c), (c)}, {(c), (c), (c)}}} 
 
 enum colors{
@@ -166,10 +165,24 @@ void LMove(){
     T[0][0] = posterior_0_0;
 }
 
+int key_read(){
+    int c;
+
+    initscr();                 /* Start curses mode     */
+    c = getch();
+    endwin();                  /* End curses mode    */
+
+    std::cout << "Char: " << c << std::endl;
+
+    return c;
+}
 
 int main(){
-    display();
-    RMove();
+    while(true){
+        display();
+        int key = key_read(); 
+    }
+
     display();
     MMove();
     display();
